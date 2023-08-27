@@ -1,0 +1,11 @@
+mat-form-field {
+  width: 100%;
+}
+
+label {
+  font-size: 19px;
+}
+
+input[type="text"] {
+  font-size: initial;
+}

@@ -1,0 +1,33 @@
+mat-form-field {
+    width: 100%;
+}
+
+input[type="text"] {
+    font-size: initial;
+}
+
+.c-sidebar-nav-title {
+    padding-top: 0;
+    margin-top: 1rem;
+    margin-left: 5px;
+    font-size: 80%;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.25s;
+    list-style-type: none
+}
+
+.c-sidebar-nav {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1;
+    flex: 1;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    list-style: none;
+}

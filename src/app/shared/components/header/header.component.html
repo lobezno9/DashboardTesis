@@ -1,0 +1,80 @@
+<!-- ============================================================== -->
+<!-- toolbar -->
+<!-- ============================================================== -->
+<mat-toolbar color="primary" class="toolbar">
+    <!-- ============================================================== -->
+    <!-- Button Open Menu Sidevar -->
+    <!-- ============================================================== -->
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        (click)=" !change?  [navService.openNav() , change= !change ]: [navService.closeNav() , change= !change ]"
+        type="button">
+        <mat-icon>menu</mat-icon>
+    </button> -->
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+        (click)="navService.openNav()" type="button">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <!-- ============================================================== -->
+    <!-- End Button Open Menu Sidevar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Menu Option Manager  -->
+    <!-- ============================================================== -->
+    <ul class="c-header-nav d-md-down-none" *ngIf="Admin">
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/Users">Usuarios</a>
+        </li>
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/Profile">Perfiles</a>
+        </li>
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/Options">Menú</a>
+        </li>
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/Permission">Permisos</a>
+        </li>
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/Group">Grupos </a>
+        </li>
+        <li class="c-header-nav-item px-3 menu">
+            <a class="c-header-nav-link" (click)="ResetActiveClass()" [routerLinkActive]="['c-active']"
+                routerLink="/Administration/Management/UserType">Tipo Usuarios </a>
+        </li>
+    </ul>
+    <!-- ============================================================== -->
+    <!-- End Menu Option Manager -->
+    <!-- ============================================================== -->
+    <span class="spacer"></span>
+
+
+    <ul class="c-header-nav d-md-down-none">
+        <li class="c-header-nav-item px-1 menu"><a>{{fullName | titlecase}}</a></li>
+    </ul>
+    <!-- ============================================================== -->
+    <!-- Menu Option -->
+    <!-- ============================================================== -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <!-- <button mat-menu-item (click)="navService.openNavEnd()">
+            <mat-icon matSuffix>settings</mat-icon>
+            <span>Settings</span>
+        </button> -->
+        <button mat-menu-item (click)="LogOut()">
+            <mat-icon>logout</mat-icon>
+            <span>Log Out</span>
+        </button>
+    </mat-menu>
+    <!-- ============================================================== -->
+    <!-- End Menu Option  -->
+    <!-- ============================================================== -->
+</mat-toolbar>
+<!-- ============================================================== -->
+<!-- End toolbar -->
+<!-- ============================================================== -->

@@ -1,0 +1,23 @@
+mat-form-field {
+  width: 100%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+input[type="text"] {
+  font-size: initial;
+}
+
+::ng-deep .cdk-overlay-pane {
+  /* Do you changes here */
+  min-width: 550px;
+  justify-content: flex-end;
+}

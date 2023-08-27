@@ -1,0 +1,32 @@
+<form [formGroup]="formCreateGroup">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-form-field>
+                <input matInput #code maxlength="5" required placeholder="Code" value="value" formControlName="code">
+                <mat-hint align="end">{{code.value.length}} / 5</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12">
+            <mat-form-field>
+                <input matInput #description maxlength="60" required placeholder="Description" value="value"
+                    formControlName="description" style="text-transform:uppercase">
+                <mat-hint align="end">{{description.value.length}} / 60</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <!-- <input #state type="checkbox" required formControlName="state">
+                <label class="form-check-label"> &nbsp;Activo? </label> -->
+            <mat-slide-toggle formControlName="state">Activo!</mat-slide-toggle>
+
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-12 text-right">
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;" (click)="OnSubmit()"
+                value="Enviar" [disabled]="!formCreateGroup.valid"> Save </button>
+        </div>
+    </div>
+    <input type="hidden" formControlName="id">
+</form>
+<app-spinner [show]=showLoader></app-spinner>

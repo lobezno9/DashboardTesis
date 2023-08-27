@@ -1,0 +1,76 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<section id="wrapper" class="login-register login-sidebar"
+    style="background-image:url(./assets/images/background/Fondo.jpg);">
+    <div class="login-box card">
+        <div class="card-body">
+            <form class="form-horizontal form-material " id="loginform" [formGroup]="loginForm">
+                <img src="./assets/images/Logo2.png" alt="Home" />
+
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <mat-form-field>
+                            <input matInput #description maxlength="30" required placeholder="Usuario" value="value"
+                                formControlName="username" autofocus="autofocus" autocomplete="off">
+                            <mat-icon matSuffix>person</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <mat-form-field>
+                            <input matInput #description maxlength="30" required placeholder="Contraseña"
+                                [type]="hide ? 'password' : 'text'" value="value" formControlName="password" autocomplete="off">
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}
+                            </mat-icon>
+
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <button class="btn btn-link px-0" type="button"
+                            (click)="OpenModalRecoverPassword(modalRecoverPassword)">
+                            ¿Olvidaste tu contraseña?</button>
+                    </div>
+                </div>
+
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-block VCB btn-rounded" type="button" [disabled]="!loginForm.valid"
+                            (click)="login(modalRecoverPassword)">Ingresar</button>
+
+
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <p>© {{year}} Clinica Nueva.</p>
+                </div>
+            </form>
+
+        </div>
+        <!-- <footer class="footer text-center">© {{year}} Clinica Nueva.</footer> -->
+
+    </div>
+</section>
+<!-- Modal recover password -->
+<ng-template #modalRecoverPassword let-modal>
+    <div class="modal-header">
+        <!-- <h4 class="modal-title" id="modal-basic-title">Recuperar contraseña</h4> -->
+        <h4 class="modal-title" id="modal-basic-title">Cambio de contraseña</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-recover-password></app-recover-password>
+    </div>
+</ng-template>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<app-spinner [show]=showLoader></app-spinner>

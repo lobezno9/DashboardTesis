@@ -1,0 +1,117 @@
+<mat-card-content>
+
+    <div class="row">
+        <div class="col-md-8">
+            <mat-form-field class="con">
+                <mat-label>
+                    <mat-icon>search</mat-icon>Filter
+                </mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Usuario , 001" #input>
+
+            </mat-form-field>
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;"
+                (click)="open(modalCreateUser)" value="Buscar">Nuevo</button>
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;" (click)="exportTable()"
+                value="Buscar">Export</button>
+        </div>
+        <div class="col-md-4 text-right">
+        </div>
+    </div>
+
+    <div class="mat-elevation-z1 con">
+        <table mat-table id="ExportTable" [dataSource]="dataSource" matSort class="mat-elevation-z1">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- FullName Column -->
+            <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> UserName </th>
+                <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+
+            <!-- FullName Column -->
+            <ng-container matColumnDef="FullName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+            </ng-container>
+
+            <!-- email Column -->
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+
+            <!-- profile Column -->
+            <ng-container matColumnDef="profile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Profile </th>
+                <td mat-cell *matCellDef="let element"> {{element.profile.description}} </td>
+            </ng-container>
+
+            <!-- isActive Column -->
+            <ng-container matColumnDef="isActive">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Activo </th>
+                <!-- <td mat-cell *matCellDef="let element"> {{element.isActive}} </td> -->
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.isActive" class="badge badge-success"> Activo</span>
+                    <span *ngIf="!element.isActive" class="badge badge-secondary"> Inactivo</span>
+
+                </td>
+            </ng-container>
+
+            <!-- isActive Column -->
+            <ng-container matColumnDef="modificationDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Modification Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.modificationDate |date:'M/d/yy, h:mm a'}} </td>
+            </ng-container>
+            <!-- isActive identification -->
+            <!-- <ng-container matColumnDef="identification">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Identification </th>
+                <td mat-cell *matCellDef="let element"> {{element.identification |currency:'COP'}} </td>
+            </ng-container> -->
+
+            <!-- accion Column -->
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Acction </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="openEdit(modalCreateUser,element)">
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="DeleteUser(element)">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+</mat-card-content>
+
+<!-- Modal create User -->
+<ng-template #modalCreateUser let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected == null">Crear
+            User</h4>
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected != null">Edición
+            User</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-user-create [UserModel]="itemSelected"></app-user-create>
+    </div>
+</ng-template>
+
+<app-spinner [show]=showLoader></app-spinner>

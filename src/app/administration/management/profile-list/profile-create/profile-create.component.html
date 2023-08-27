@@ -1,0 +1,51 @@
+<form [formGroup]="formCreateProfile">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-5">
+                <mat-form-field>
+                    <input matInput #profileCode maxlength="5" required placeholder="Code Profile" value="value"
+                        formControlName="profileCode">
+                    <mat-hint align="end">{{profileCode.value.length}} / 5</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="col-md-9">
+                <mat-form-field>
+                    <input matInput #description maxlength="60" required placeholder="Description" value="value"
+                        formControlName="description" style="text-transform:uppercase">
+                    <mat-hint align="end">{{description.value.length}} / 60</mat-hint>
+                </mat-form-field>
+            </div>
+            <!-- <div class="col-md-12">
+                <mat-slide-toggle formControlName="isSuperAdmin">Administration!</mat-slide-toggle>
+            </div> -->
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-md-11 text-right">
+                    <button type="button" mat-flat-button color="primary" style="margin-left: 10px;"
+                        (click)="OnSubmit()" value="Enviar" [disabled]="!formCreateProfile.valid"> Save </button>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-12" style="overflow-y: scroll;height: 20em;">
+
+                <ul class="c-sidebar-nav ">
+                    <label class="required">Opciones:</label>
+                    <div *ngFor="let itemMenu of listMenu" class="menu">
+                        <!-- {{itemMenu | json}} -->
+                        <li class="c-sidebar-nav-title">{{ itemMenu.title }}</li>
+                        <app-menu-item *ngFor="let itemOption of itemMenu.listOption" [item]="itemOption">
+                        </app-menu-item>
+                    </div>
+                </ul>
+
+                <!-- <label class="form-control" formArrayName="options" *ngFor="let itemOption of listOptions; let i = index">
+                    <input type="checkbox" ng-value="itemOption.id" (change)="onCheckboxChange($event,itemOption.id)"/>
+                    {{itemOption.description}}
+                </label> -->
+            </div>
+        </div>
+
+    </div>
+</form>
+<app-spinner [show]=showLoader></app-spinner>

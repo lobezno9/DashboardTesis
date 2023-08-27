@@ -1,0 +1,89 @@
+<mat-card-content>
+    <div class="row">
+        <div class="col-md-8">
+            <mat-form-field class="con">
+                <mat-label>
+                    <mat-icon>search</mat-icon>Filter
+                </mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Perfile , 001" #input>
+
+            </mat-form-field>
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;"
+                (click)="open(modalCreatePerfiles)" value="Buscar">Nuevo</button>
+        </div>
+        <div class="col-md-4 text-right">
+        </div>
+    </div>
+
+    <div class="mat-elevation-z1 con">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+
+            <!-- id Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <!-- profileCode Column -->
+            <ng-container matColumnDef="profileCode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                <td mat-cell *matCellDef="let element"> {{element.profileCode}} </td>
+            </ng-container>
+
+            <!-- description Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+            <!-- isSuperAdmin Column -->
+            <ng-container matColumnDef="isSuperAdmin">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Administration </th>
+                <!-- <td mat-cell *matCellDef="let element"> {{element.isSuperAdmin}} </td> -->
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.isSuperAdmin" class="badge badge-success"> Admin</span>
+                    <span *ngIf="!element.isSuperAdmin" class="badge badge-secondary"> Normal</span>
+
+                </td>
+            </ng-container>
+
+            <!-- accion Column -->
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Acction </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="openEdit(modalCreatePerfiles,element)">
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="DeleteProfile(element)">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+</mat-card-content>
+
+<!-- Modal create Perfiles -->
+<ng-template #modalCreatePerfiles let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected == null">Crear
+            Profile</h4>
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected != null">Edición
+            Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-profile-create [ProfileModel]="itemSelected"></app-profile-create>
+    </div>
+</ng-template>
+
+<app-spinner [show]=showLoader></app-spinner>

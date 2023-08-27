@@ -1,0 +1,83 @@
+<div id="main-wrapper">
+
+  <mat-sidenav-container>
+    <!-- ============================================================== -->
+    <!-- Header -->
+    <!-- ============================================================== -->
+    <header class="c-header">
+      <app-header fxHide.xs [Admin]="isSuperAdmin" [fullName]="fullName"></app-header>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Header -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Sidenav -->
+    <!-- ============================================================== -->
+
+    <!-- Sidenav Start -->
+    <mat-sidenav #appDrawer mode="over" opened="false">
+      <div class="container">
+        <a class="text-center db">
+          <span>
+            <img (click)="OnRedirect()" src="./assets/images/Logo4.png" />
+          </span>
+        </a>
+        <hr>
+      </div>
+
+      <mat-nav-list *ngFor="let itemMenu of listMenu">
+        <li class="c-sidebar-nav-title">{{ itemMenu.title }}</li>
+        <app-sidebar style="margin-left: 0px;" *ngFor="let itemOption of itemMenu.listOption" [item]="itemOption">
+        </app-sidebar>
+        <!-- <hr> -->
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <!-- Sidenav End -->
+    <mat-sidenav #sideEnd mode="over" opened="false" position="end">
+
+      End content
+
+    </mat-sidenav>
+    <!-- ============================================================== -->
+    <!-- End Sidenav -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Breadcrumbs -->
+    <!-- ============================================================== -->
+    <app-breadcrumbs></app-breadcrumbs>
+    <!-- ============================================================== -->
+    <!-- End Breadcrumbs -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- Content -->
+    <!-- ============================================================== -->
+    <div class="c-wrapper">
+      <!-- <div class="c-body" style="background-color: lightcoral;"> -->
+      <!-- <main class="c-main" style="background-color: lightgoldenrodyellow;"> -->
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- </main> -->
+      <!-- </div> -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Content -->
+    <!-- ============================================================== -->
+
+  </mat-sidenav-container>
+  <!-- ============================================================== -->
+  <!-- Footer -->
+  <!-- ============================================================== -->
+  <footer class="footer">
+    ©{{year}} Clinica Nueva
+  </footer>
+  <!-- ============================================================== -->
+  <!-- End Footer -->
+  <!-- ============================================================== -->
+
+</div>

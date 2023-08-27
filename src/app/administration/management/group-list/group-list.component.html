@@ -1,0 +1,87 @@
+<mat-card-content>
+
+    <div class="row">
+        <div class="col-md-8">
+            <mat-form-field class="con">
+                <mat-label>
+                    <mat-icon>search</mat-icon>Filter
+                </mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Grupo , 001" #input>
+
+            </mat-form-field>
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;"
+                (click)="open(modalCreateGroup)" value="Buscar">Nuevo</button>
+        </div>
+        <div class="col-md-4 text-right">
+        </div>
+    </div>
+
+    <div class="mat-elevation-z1 con">
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <!-- code Column -->
+            <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="timeStamp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.timeStamp | date}} </td>
+            </ng-container>
+
+            <!-- Name accion -->
+            <ng-container matColumnDef="accion">
+                <th mat-header-cell *matHeaderCellDef> Acction </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="openEdit(modalCreateGroup,element)">
+                        <mat-icon color="primary">edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="DeleteGroup(element)">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+</mat-card-content>
+
+<!-- Modal create Group -->
+<ng-template #modalCreateGroup let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected == null">Crear
+            Group</h4>
+        <h4 class="modal-title" id="modal-basic-title" *ngIf="itemSelected != null">Edición
+            Group</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-group-create [GroupModel]="itemSelected"></app-group-create>
+    </div>
+</ng-template>
+
+<app-spinner [show]=showLoader></app-spinner>

@@ -1,0 +1,47 @@
+.itemMenu {
+    background-color: #f4f4f4;
+}
+
+.firtsLevel {
+    background: #acacaa;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: white;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #1976D2 !important;
+    border-color: #2095f3 !important;
+    margin: 3px;
+}
+
+.btn-success {
+    background-color: #1976D2 !important;
+    border-color: #2095f3 !important;
+    margin: 3px;
+}
+
+.btn-danger {
+    background-color: #BD2727 !important;
+    border-color: #eb4135 !important;
+    margin: 3px;
+}
+
+.c-sidebar-nav {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex: 1;
+    flex: 1;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0;
+    margin-bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    list-style: none;
+}

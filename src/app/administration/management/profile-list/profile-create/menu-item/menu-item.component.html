@@ -1,0 +1,28 @@
+<mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <div class="itemElement" [ngClass]="[item.listOption && item.listOption.length > 0 ? 'isParent' : '']">
+                <input type="checkbox" name="name" id="name" [value]="item.isChecked" [checked]="item.isChecked"
+                    (change)="onCheckboxChange($event)">
+                <!-- <mat-checkbox class="example-margin"  [(ngModel)]="item.isChecked"(change)="onCheckboxChange($event)"></mat-checkbox> -->
+
+                <a [ngStyle]="{'padding-left': depth  + 'px'}"> {{item.description}} </a>
+            </div>
+        </mat-panel-title>
+
+    </mat-expansion-panel-header>
+    <ul class="c-sidebar-nav-dropdown-items">
+        <mat-expansion-panel *ngIf="item.listPermission.length" class="mat-elevation-z1">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Permisos
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-permission-item *ngFor="let itemp of item.listPermission" [item]="itemp" [depth]="depth+1">
+            </app-permission-item>
+        </mat-expansion-panel>
+        <app-menu-item *ngFor="let itemChild of item.listOption" [item]="itemChild" [depth]="depth+1">
+        </app-menu-item>
+
+    </ul>
+</mat-expansion-panel>

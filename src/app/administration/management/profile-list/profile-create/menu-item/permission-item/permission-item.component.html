@@ -1,0 +1,5 @@
+<li>
+  <input type="checkbox" name="name" id="name" [value]="item.isChecked" [checked]="item.isChecked"
+    (change)="onCheckboxChange($event)">
+  <a> {{item.description}} </a>
+</li>

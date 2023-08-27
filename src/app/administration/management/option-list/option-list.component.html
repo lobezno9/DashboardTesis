@@ -1,0 +1,25 @@
+<div class="row pb-10">
+    <div class="col-md-12">
+        <div class="float-right"><button class="btn btn-success" (click)="OnSubmit()">Almacenar</button></div>
+        <div class="float-right"><button class="btn btn-primary" (click)="AddMenu()">+</button></div>
+    </div>
+</div>
+
+<ul class="c-sidebar-nav menuContent">
+    <div *ngFor="let itemMenu of listMenu" class="itemMenu">
+        <div class="row firtsLevel" *ngIf="!itemMenu.isToRemove">
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="itemMenu.title" class="form-control" placeholder="Titulo" />
+            </div>
+            <div class="col-md-8">
+                <button class="float-right btn btn-primary" (click)="AddElement(itemMenu)">+</button>
+                <button class="float-right btn btn-danger" (click)="RemoveElement(itemMenu)">-</button>
+            </div>
+        </div>
+        <div *ngIf="!itemMenu.isToRemove">
+            <app-menu-item-manager *ngFor="let itemOption of itemMenu.listOption" [item]="itemOption">
+            </app-menu-item-manager>
+        </div>
+    </div>
+</ul>
+<app-spinner [show]=showLoader></app-spinner>

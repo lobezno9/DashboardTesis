@@ -1,0 +1,260 @@
+/* You can add global styles to this file, and also import other style files */
+/*Definicion de Fuentes */
+/*Fuente para Titulos */
+@font-face {
+    font-family: Horatio;
+    src: url(./assets/fonts/HoratioDLig.TTF) format("TrueType");
+}
+
+/*Fuente para Contenido */
+@font-face {
+    font-family: Futura;
+    src: url(./assets/fonts/Futura.ttf) format("TrueType");
+}
+
+/* Definicion de Tipo de Puntero */
+#themecolors .selector {
+    cursor: pointer;
+}
+
+/*Definicion de Colores */
+/* Verde Oscuro y su Degradado */
+.VO {
+    color: #35835B;
+}
+
+.VO1 {
+    color: #1F5D42;
+}
+
+/* Verde Claro y su Degradado */
+.VC {
+    color: #76C270;
+}
+
+.VC1 {
+    color: #5E9A59;
+}
+
+/* Gris Claro */
+.GC {
+    color: #80807F;
+}
+
+/* Gris Oscuro */
+.GO {
+    color: #404141;
+}
+
+/* Colores de Background  */
+/* Verde Oscuro y su Degradado */
+.VOB {
+    background-color: #35835B;
+    color: white;
+}
+
+.VOB1 {
+    background-color: #1F5D42;
+    color: white;
+}
+
+/* Verde Claro y su Degradado */
+.VCB {
+    background-color: #76C270;
+    color: white;
+}
+
+.VCB1 {
+    background-color: #5E9A59;
+    color: white;
+}
+
+/* Gris Claro */
+.GCB {
+    background-color: #80807F;
+    color: white;
+}
+
+/* Gris Oscuro */
+.GOB {
+    background-color: #404141;
+    color: white;
+}
+
+/* Definicion de Titulos */
+/* Titulo */
+h1 {
+    font-family: 'Horatio';
+    font-weight: bolder;
+    line-height: 40px;
+    font-size: 36px;
+}
+
+/* SubTitulo */
+h2 {
+    font-family: 'Horatio';
+    font-weight: bold;
+    line-height: 36px;
+    font-size: 24px;
+}
+
+/* Subtitulos de H2 */
+h3 {
+    font-family: 'Horatio';
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 21px;
+}
+
+h4 {
+    font-family: 'Horatio';
+    font-weight: bold;
+    line-height: 22px;
+    font-size: 18px;
+}
+
+h5 {
+    font-family: 'Horatio';
+    font-weight: bold;
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+h6 {
+    font-family: 'Horatio';
+    font-weight: bold;
+    line-height: 16px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Definicion Contenido */
+p {
+    font-family: 'Futura';
+    font-weight: lighter;
+}
+
+a {
+    font-family: 'Futura';
+    font-weight: lighter;
+}
+
+i {
+    font-family: 'Horatio';
+    font-weight: bold;
+}
+
+input {
+    font-family: 'Futura';
+    font-weight: bold;
+}
+
+label {
+    font-family: 'Futura';
+    color: #80807F;
+}
+
+button {
+    font-family: 'Horatio ';
+    font-weight: lighter;
+}
+
+input[type="text"] {
+    font-size: 20px;
+}
+
+input[type="password"] {
+    font-size: 20px;
+}
+
+span {
+    font-family: 'Horatio ';
+    font-weight: lighter;
+}
+
+footer {
+    font-family: 'Horatio ';
+    font-weight: lighter;
+}
+
+
+.preloader {
+    background: rgba(255, 255, 255, 0.5);
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    top: 35%;
+    position: relative;
+    margin: 100px auto;
+}
+
+.double-bounce1,
+.double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #76C270;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+
+    0%,
+    100% {
+        -webkit-transform: scale(0.0)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes sk-bounce {
+
+    0%,
+    100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+.cdk-global-overlay-wrapper,
+.cdk-overlay-container {
+    z-index: 9999 !important;
+}

@@ -1,0 +1,47 @@
+<li class="c-sidebar-nav-item c-sidebar-nav-dropdown c-show" [ngClass]="depth === 0 ? 'containerMenu': ''"
+    [ngClass]="item.isNewElement ? 'isNewElement': ''" *ngIf="!item.isToRemove">
+    <div class="pad-5" [ngClass]="[item.listOption ? 'isParent' : '']">
+        <div class="row">
+
+            <div class="col-md-3">
+                <input type="text" [(ngModel)]="item.description" class="form-control" placeholder="Descripción" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" [(ngModel)]="item.url" class="form-control" placeholder="Url" />
+            </div>
+            <div class="col-md-2">
+                <input type="text" [(ngModel)]="item.icon" class="form-control" placeholder="Icon" />
+            </div>
+            <!-- <div class="col-md-2">
+                <input type="text" [(ngModel)]="item.token" class="form-control" placeholder="Token" />
+            </div> -->
+            <div class="col-md-2">
+                <mat-form-field appearance="outline" *ngIf="flag">
+                    <!-- <mat-label>Seleccionar Permisos</mat-label> -->
+                    <mat-select [(ngModel)]="item.listPermission" multiple placeholder="Seleccionar Permisos">
+                        <mat-option *ngFor="let topping of item.listPermission" [value]="topping">
+                            {{topping.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" *ngIf="!flag">
+                    <!-- <mat-label>Seleccionar Permisos</mat-label> -->
+                    <mat-select [(ngModel)]="item.listPermission" multiple placeholder="Seleccionar Permisos">
+                        <mat-option *ngFor="let topping of ListPermission" [value]="topping">{{topping.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2">
+                <button class="float-right btn btn-primary" (click)="AddElement()">+</button>
+                <button class="float-right btn btn-danger" (click)="RemoveElement()">-</button>
+            </div>
+        </div>
+    </div>
+    <!-- <ul class="c-sidebar-nav-dropdown-items"> -->
+    <ul class="">
+        <app-menu-item-manager *ngFor="let itemChild of item.listOption" [item]="itemChild" [depth]="depth+1">
+        </app-menu-item-manager>
+    </ul>
+</li>

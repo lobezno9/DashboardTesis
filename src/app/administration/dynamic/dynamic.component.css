@@ -1,0 +1,35 @@
+@media only screen and (min-width: 768px) {
+    iframe {
+        position: absolute;
+        height: 84%;
+        border: none;
+        width: 96.8%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    iframe {
+        position: absolute;
+        height: 84%;
+        border: none;
+        width: 96.8%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    iframe {
+        position: absolute;
+        height: 84%;
+        border: none;
+        width: 98.3%;
+    }
+}
+
+@media only screen and (min-width: 1601px) {
+    iframe {
+        position: absolute;
+        height: 87%;
+        border: none;
+        width: 98.7%;
+    }
+}

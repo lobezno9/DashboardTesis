@@ -1,0 +1,107 @@
+<form [formGroup]="formCreateUser">
+    <!-- First row  -->
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <mat-form-field>
+                <input matInput #firstName maxlength="50" required placeholder="firstName" value="value"
+                    formControlName="firstName" style="text-transform:uppercase">
+                <mat-hint align="end">{{firstName.value.length}} / 50</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field>
+                <input matInput #lastName maxlength="50" required placeholder="lastName" value="value"
+                    formControlName="lastName" style="text-transform:uppercase">
+                <mat-hint align="end">{{lastName.value.length}} / 50</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+    <!-- Second row -->
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput #identification maxlength="15" required placeholder="identification" value="value"
+                    formControlName="identification">
+                <mat-hint align="end">{{identification.value.length}} / 15</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput #username maxlength="50" required placeholder="username" value="value"
+                    formControlName="username" autocomplete="off">
+                <mat-hint align="end">{{username.value.length}} / 50</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <input matInput #password maxlength="50" matTooltip="Debe tener almenos 8 caracteres"
+                    [required]="!UserModel" placeholder="password" type="password" value="value"
+                    formControlName="password" autocomplete="off">
+                <mat-hint align="end">{{password.value.length}} / 50</mat-hint>
+            </mat-form-field>
+
+            <!-- <mat-form-field *ngIf="UserModel">
+                <input matInput #password maxlength="50" placeholder="password" type="password" value="value"
+                    formControlName="password">
+                <mat-hint align="end">{{password.value.length}} / 50</mat-hint>
+            </mat-form-field> -->
+        </div>
+    </div>
+
+    <!--    Row  -->
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <mat-form-field class="example-full-width">
+                <mat-label>Profile</mat-label>
+                <input type="text" matInput [formControl]="formCreateUser.controls.profile" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let option of filteredProfile | async" ngValue="option.id" [value]="option">
+                        {{option.description}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <mat-label>Group</mat-label>
+                <mat-select formControlName="GroupId">
+                    <mat-option *ngFor="let item of ListGroup" [value]="item.id">
+                        {{item.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field>
+                <mat-label>User Type</mat-label>
+                <mat-select formControlName="UserTypeId">
+                    <mat-option *ngFor="let item of ListUserType" [value]="item.id">
+                        {{item.description}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <!--    Row  -->
+    <div class="row mt-2">
+
+        <div class="col-md-8">
+            <mat-form-field>
+                <input matInput #email maxlength="50" required placeholder="email" value="value"
+                    formControlName="email">
+                <mat-hint align="end">{{email.value.length}} / 50</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <br>
+            <mat-slide-toggle formControlName="isActive">Activo!</mat-slide-toggle>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-12 text-right">
+            <button type="button" mat-flat-button color="primary" style="margin-left: 10px;" (click)="OnSubmit()"
+                value="Enviar" [disabled]="!formCreateUser.valid"> Save </button>
+        </div>
+    </div>
+</form>
